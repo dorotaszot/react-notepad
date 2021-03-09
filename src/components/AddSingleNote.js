@@ -2,9 +2,9 @@ import React from 'react';
 
 const AddSingleNote = (props) => {
   return (
-    <div className="d-flex justify-content-start container">
+    <div className="d-flex justify-content-center container">
       <form action="#" onSubmit={props.handleOnSubmit}>
-       <div  className="single-note d-flex flex-column m-3">
+       <div className="single-note d-flex flex-column m-3">
         <input 
           type="text" name='noteTitle' 
           placeholder='Title' 

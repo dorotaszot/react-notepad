@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AddSingleNote from './components/AddSingleNote';
 import { useState } from 'react';
+import AddedNotesList from './components/AddedNotesList';
 
 
 
@@ -10,6 +11,33 @@ function App() {
     title: '',
     note: ''
   });  
+
+  const [addedNotes, setAddedNotes] = useState([
+    {
+      title: 'Meeting',
+      note: 'lorem lorem lroenerm efnmdf dfn dmfndnfdmfdmnf dm f'
+    },
+    {
+      title: 'Shopping',
+      note: 'sfkjs fksjfsdjflskjf sldkfj skdlfj dskfj dkf'
+    },
+    {
+      title: 'thoughts on sth important',
+      note: 'sdfsd sfd sd  s ff sf sd s s fsd sd fsf sd sd sd sd fs s ds ssfs fsd sdf dsf df'
+    },
+    {
+      title: 'Meeting',
+      note: 'lorem lorem lroenerm efnmdf dfn dmfndnfdmfdmnf dm f'
+    },
+    {
+      title: 'Shopping',
+      note: 'sfkjs fksjfsdjflskjf sldkfj skdlfj dskfj dkf'
+    },
+    {
+      title: 'thoughts on sth important',
+      note: 'sdfsd sfd sd  s ff sf sd s s fsd sd fsf sd sd sd sd fs s ds ssfs fsd sdf dsf df'
+    }
+  ]);
   
   const handleTitleInput = (event) => {
     setInputs({...inputs, title: event.target.value})
@@ -21,11 +49,20 @@ function App() {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    console.log(inputs);
+    const newNotes = {...addedNotes, title: inputs.title, note: inputs.note}
+    setAddedNotes(newNotes);
   }
+  console.log(addedNotes);
+  
 
   return (
-   <AddSingleNote inputs={inputs} setInputs={setInputs} handleTitleInput={handleTitleInput} handleNoteInput={handleNoteInput} handleOnSubmit={handleOnSubmit}/>
+    <div>
+      <div className="container">
+        <AddSingleNote inputs={inputs} setInputs={setInputs} handleTitleInput={handleTitleInput} handleNoteInput={handleNoteInput} handleOnSubmit={handleOnSubmit}/>
+      </div>
+      <AddedNotesList addedNotes={addedNotes}/>
+    </div>
+    
   );
 }
 
